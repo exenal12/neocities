@@ -5,9 +5,21 @@
 body {
   background-color: black;
   font-size: 20px;
+  height: 100dvh;
+  gap: 10px;
+  padding: 20px 0;
+  box-sizing: border-box;
   color: darkgray;
-  font-family: "Andale Mono", Helvetica, sans-serif;
-  text-align: center;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 a {
   color: #902c2a;
@@ -17,14 +29,13 @@ header {
   color: darkgray;
   box-sizing: border-box;
   width: 70%;
-  margin: 0px auto;
-  margin-bottom: 10px;
+  margin: 0 auto;
   border: 5px ridge #700000;
   border-radius: 10px;
 }
 
 header h2 {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-align: center;
 }
 
 nav {
@@ -33,7 +44,6 @@ nav {
   width: 70%;
   padding: 4px 6px;
   margin: 0px auto;
-  margin-bottom: 10px;
   box-sizing: border-box;
   display: flex;
   gap: 50px;
@@ -46,59 +56,35 @@ nav a {
   color: darkgray;
 }
 
+/* layout_main is the part of the webpage below the header/nav */
+.layout_main {
+  display: grid;
+  min-height: 0;
+  flex: 1;
+  grid-template-columns: 15% 70% 15%;
+  grid-template-rows: 1fr;
+  grid-template-areas: "left main right";
+}
+
 .sidebar {
-  position: sticky;
-  left: 2%;
-  top: 30%;
-  padding: 4px 6px;
-  margin: auto 0px;
-  width: 10%;
-  height: 60vh;
-  box-sizing: border-box;
+  grid-area: left;
+  width: 60%;
+  min-height: 60%;
+  justify-self: center;
+  align-items: center;
+  align-self: center;
   display: flex;
   justify-content: center;
   border: 5px groove #500000;
   border-radius: 10px;
 }
 
-.sidebar p {
-  text-align: center;
-  text-justify: center;
-}
-
-h2 {
-  text-align: center;
-}
-#d1 p {
-  text-align: center;
-}
-div.container {
-  text-align: center;
-}
-plastUpdated {
-  font-size: 5px;
-}
-ul.list {
-  display: inline-block;
-  text-align: left;
-}
-
-#last {
-  display: none;
-  position: fixed;
-  bottom: 0px;
-  right: 0px;
-  width: 200px;
-}
-
-#last img {
-  padding-right: 5px;
-}
-
-#last p {
-  float: left;
-}
-
-#last div {
-  margin: 16px;
+/* main_body is the "center" part of the  */
+.main_body {
+  border: 5px solid red;
+  grid-area: main;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
