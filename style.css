@@ -19,7 +19,8 @@ header {
   width: 70%;
   margin: 0px auto;
   margin-bottom: 10px;
-  border: 5px inset #700000;
+  border: 5px ridge #700000;
+  border-radius: 10px;
 }
 
 header h2 {
@@ -29,7 +30,7 @@ header h2 {
 nav {
   position: sticky;
   top: 0;
-  width: 50%;
+  width: 70%;
   padding: 4px 6px;
   margin: 0px auto;
   margin-bottom: 10px;
@@ -37,11 +38,32 @@ nav {
   display: flex;
   gap: 50px;
   justify-content: space-evenly;
-  border: 5px groove #500000;
+  border: 5px ridge #500000;
+  border-radius: 10px;
 }
 
 nav a {
   color: darkgray;
+}
+
+.sidebar {
+  position: sticky;
+  left: 2%;
+  top: 30%;
+  padding: 4px 6px;
+  margin: auto 0px;
+  width: 10%;
+  height: 60vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  border: 5px groove #500000;
+  border-radius: 10px;
+}
+
+.sidebar p {
+  text-align: center;
+  text-justify: center;
 }
 
 h2 {
