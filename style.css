@@ -3,54 +3,80 @@
    "how to change link color." */
 
 body {
-  background-color: gray;
+  background-color: black;
   font-size: 20px;
-  color: black;
+  color: darkgray;
   font-family: "Andale Mono", Helvetica, sans-serif;
   text-align: center;
 }
 a {
-    color: #902C2A;
-    text-align: center;
+  color: #902c2a;
 }
+
+header {
+  color: darkgray;
+  box-sizing: border-box;
+  width: 70%;
+  margin: 0px auto;
+  margin-bottom: 10px;
+  border: 5px inset #700000;
+}
+
+header h2 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  width: 50%;
+  padding: 4px 6px;
+  margin: 0px auto;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 50px;
+  justify-content: space-evenly;
+  border: 5px groove #500000;
+}
+
+nav a {
+  color: darkgray;
+}
+
 h2 {
   text-align: center;
 }
-#d1
-p {
+#d1 p {
   text-align: center;
 }
 div.container {
-    text-align: center;
+  text-align: center;
 }
 plastUpdated {
-    font-size: 5px;
+  font-size: 5px;
 }
 ul.list {
-    display: inline-block;
-    text-align: left;
+  display: inline-block;
+  text-align: left;
 }
 
-#last
-{
-  display:none;
-  position:fixed;
-  bottom:0px;
-  right:0px;
-  width:200px;
+#last {
+  display: none;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  width: 200px;
 }
 
-#last img
-{
-    padding-right:5px;
+#last img {
+  padding-right: 5px;
 }
 
-#last p
-{
-  float:left;
+#last p {
+  float: left;
 }
 
-#last div
-{
-  margin:16px;
+#last div {
+  margin: 16px;
 }
