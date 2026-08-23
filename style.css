@@ -81,7 +81,6 @@ nav a {
 
 /* main_body is the "center" part of the  */
 .main_body {
-  border: 5px solid red;
   grid-area: main;
   display: flex;
   align-items: center;
