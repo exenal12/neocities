@@ -11,6 +11,11 @@ function randomStar(canvas) {
 
 const can = document.getElementById("canvas");
 const ctx = can.getContext("2d");
+const dpr = window.devicePixelRatio || 1;
+can.width = window.innerWidth * dpr;
+can.height = window.innerHeight * dpr;
+
+ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 const stars = Array.from({ length: STAR_COUNT }, () => randomStar(can));
 
 ctx.beginPath();

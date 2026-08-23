@@ -11,10 +11,14 @@
     />
     <style>
       #canvas {
-        width: 100vw;
-        height: 100vh;
+        display: block;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
         flex-shrink: 0;
         align-self: flex-start;
+        overflow: hidden;
       }
     </style>
     <!-- The style.css file allows you to change the look of your web pages.
@@ -23,7 +27,7 @@
     <link href="/style.css" rel="stylesheet" />
   </head>
   <body>
-    <canvas id="canvas" width="1920" height="1080" role="background"></canvas>
+    <canvas id="canvas" role="background"></canvas>
     <script src="scripts/oneko.js"></script>
     <script src="scripts/background.js"></script>
   </body>
