@@ -67,7 +67,7 @@ function frame() {
     ctx.moveTo(x + radius, y);
     ctx.arc(x, y, radius, 0, Math.PI * 2);
   }
-  ctx.fillStyle = "darkgray";
+  ctx.fillStyle = "rgb(94, 94, 94)";
   ctx.fill();
   if (!isReducedMotion) window.requestAnimationFrame(frame);
 }
