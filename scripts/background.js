@@ -11,7 +11,7 @@ let CENTER = { X: window.innerWidth / 2, Y: window.innerHeight / 2 };
 const can = document.getElementById("canvas");
 const ctx = can.getContext("2d");
 
-function randomStar(canvas) {
+function randomStar() {
   // z coordinate: the lower the z, the closer it is to the camera
   // radius calculated using z coordinate
   const zCoord = Math.floor(Math.random() * MAX_DEPTH + MIN_DEPTH);
@@ -19,8 +19,13 @@ function randomStar(canvas) {
     x: (Math.random() - 0.5) * window.innerWidth,
     y: (Math.random() - 0.5) * window.innerHeight,
     z: zCoord,
-    color: "white",
   };
+}
+
+function respawn(star) {
+  star.x = (Math.random() - 0.5) * window.innerWidth;
+  star.y = (Math.random() - 0.5) * window.innerHeight;
+  star.z = MAX_DEPTH;
 }
 
 /*
@@ -28,15 +33,20 @@ animation steps
 1. clear screen
 2. new path
 3. calculate new z
-4. for each star, calculate radius and projection
-5. check if too close/off screen, delete/recycle if needed
-6. draw star
+4. check if too close, respawn if needed
+5. for each star, calculate radius and projection
+6. check if off screen, respawn if needed
+7. draw star
 */
 function frame() {
   ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
   ctx.beginPath();
   for (const star of stars) {
     star.z -= STAR_SPEED;
+    if (star.z < MIN_DEPTH) {
+      respawn(star);
+      continue;
+    }
     const x = CENTER.X + (star.x / star.z) * FOV;
     const y = CENTER.Y + (star.y / star.z) * FOV;
     const radius = STAR_RADIUS(star.z);
@@ -48,10 +58,8 @@ function frame() {
       y < -margin ||
       y > window.innerHeight + margin;
 
-    if (star.z < MIN_DEPTH || offScreen) {
-      star.x = (Math.random() - 0.5) * window.innerWidth;
-      star.y = (Math.random() - 0.5) * window.innerHeight;
-      star.z = MAX_DEPTH;
+    if (offScreen) {
+      respawn(star);
       continue;
     }
     ctx.moveTo(x + radius, y);
@@ -77,6 +85,6 @@ function init() {
   window.requestAnimationFrame(frame);
 }
 
-const stars = Array.from({ length: STAR_COUNT }, () => randomStar(can));
+const stars = Array.from({ length: STAR_COUNT }, () => randomStar());
 
 init();
