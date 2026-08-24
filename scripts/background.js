@@ -6,13 +6,10 @@ const STAR_RADIUS = (zCoord) =>
   Math.max(0, (1 - zCoord / MAX_DEPTH) * MAX_RADIUS);
 const STAR_SPEED = 1;
 const FOV = 400;
-const CENTER = { X: window.innerWidth / 2, Y: window.innerHeight / 2 };
+let CENTER = { X: window.innerWidth / 2, Y: window.innerHeight / 2 };
 
 const can = document.getElementById("canvas");
 const ctx = can.getContext("2d");
-const dpr = window.devicePixelRatio || 1;
-can.width = window.innerWidth * dpr;
-can.height = window.innerHeight * dpr;
 
 function randomStar(canvas) {
   // z coordinate: the lower the z, the closer it is to the camera
@@ -65,7 +62,21 @@ function frame() {
   window.requestAnimationFrame(frame);
 }
 
-ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+function resize() {
+  // handles window resize so the animation doesn't break
+  const dpr = window.devicePixelRatio || 1;
+  can.width = window.innerWidth * dpr;
+  can.height = window.innerHeight * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  CENTER = { X: window.innerWidth / 2, Y: window.innerHeight / 2 };
+}
+
+function init() {
+  resize();
+  window.addEventListener("resize", resize);
+  window.requestAnimationFrame(frame);
+}
+
 const stars = Array.from({ length: STAR_COUNT }, () => randomStar(can));
 
-window.requestAnimationFrame(frame);
+init();
