@@ -11,7 +11,6 @@ let CENTER = { X: window.innerWidth / 2, Y: window.innerHeight / 2 };
 const can = document.getElementById("canvas");
 const ctx = can.getContext("2d");
 const isReducedMotion =
-  window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
   window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 
 function randomStar() {
@@ -45,7 +44,7 @@ function frame() {
   ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
   ctx.beginPath();
   for (const star of stars) {
-    star.z -= STAR_SPEED;
+    if (!isReducedMotion) star.z -= STAR_SPEED;
     if (star.z < MIN_DEPTH) {
       respawn(star);
       continue;
@@ -86,6 +85,7 @@ function resize() {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   CENTER = { X: window.innerWidth / 2, Y: window.innerHeight / 2 };
   updateViewportSettings();
+  if (isReducedMotion) frame();
 }
 
 function init() {
