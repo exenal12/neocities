@@ -1,7 +1,7 @@
 const STAR_COUNT = 500;
 const MIN_DEPTH = 1;
 const MAX_DEPTH = 1000;
-const MAX_RADIUS = 4;
+let MAX_RADIUS = 4; // default max radius on desktop; value changed on mobile devices
 const STAR_RADIUS = (zCoord) =>
   Math.max(0, (1 - zCoord / MAX_DEPTH) * MAX_RADIUS);
 const STAR_SPEED = 1;
@@ -10,6 +10,9 @@ let CENTER = { X: window.innerWidth / 2, Y: window.innerHeight / 2 };
 
 const can = document.getElementById("canvas");
 const ctx = can.getContext("2d");
+const isReducedMotion =
+  window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
+  window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 
 function randomStar() {
   // z coordinate: the lower the z, the closer it is to the camera
@@ -67,7 +70,12 @@ function frame() {
   }
   ctx.fillStyle = "white";
   ctx.fill();
-  window.requestAnimationFrame(frame);
+  if (!isReducedMotion) window.requestAnimationFrame(frame);
+}
+
+function updateViewportSettings() {
+  const isSmall = window.innerWidth <= 768;
+  MAX_RADIUS = isSmall ? 2 : 4;
 }
 
 function resize() {
@@ -77,6 +85,7 @@ function resize() {
   can.height = window.innerHeight * dpr;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   CENTER = { X: window.innerWidth / 2, Y: window.innerHeight / 2 };
+  updateViewportSettings();
 }
 
 function init() {
