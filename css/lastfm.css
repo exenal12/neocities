@@ -1,40 +1,44 @@
 #lastfm-widget {
   color: red;
-  border: 5px solid purple;
   width: 100%;
 }
 
 .lastfm-tracklist {
-  border: 5px solid gold;
+  border: 0px solid gold;
   display: grid;
+  gap: 1rem;
 }
 
 .lastfm-track {
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto;
-  grid-template-areas: "image info";
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "image title timestamp"
+    "image artist .";
 }
 
 .lastfm-image {
   grid-area: image;
+  max-width: 100%;
+  margin-right: 10px;
 }
 
 .lastfm-info {
-  grid-area: info;
-  border: 5px solid brown;
-  align-items: center;
-  justify-items: center;
+  display: contents;
 }
 
 .lastfm-title {
-  border: 2px solid red;
+  grid-area: title;
 }
 
 .lastfm-artist {
-  border: 2px solid blue;
+  grid-area: artist;
 }
 
 .lastfm-timestamp {
-  border: 2px solid green;
+  grid-area: timestamp;
+  color: dimgray;
+  text-decoration: underline;
+  font-size: medium;
 }

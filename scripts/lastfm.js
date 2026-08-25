@@ -51,7 +51,7 @@ async function fetchAPI() {
     method: "user.getRecentTracks",
     user: USERNAME,
     api_key: API_KEY,
-    limit: "3",
+    limit: "5",
     format: "json",
   });
 
