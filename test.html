@@ -10,6 +10,7 @@
       type="image/x-icon"
     />
     <link href="/test.css" rel="stylesheet" />
+    <link href="/css/lastfm.css" rel="stylesheet" />
   </head>
   <body>
     <canvas id="canvas" role="background"></canvas>
@@ -35,9 +36,18 @@
           <p>test footer</p>
         </footer>
 
-        <div class="lastfm-widget" id="lastfm-widget">
-          this will be replaced with the widget
-        </div>
+        <!-- WIDGET SHAPE
+        inside class="lastfm-tracklist", there are multiple divs
+        each with class="lastfm-track" that represent each track scrobbled
+        inside each track div, there is an image "lastfm-image"
+        and another div, "lastfm-info".
+        inside "lastfm-info" are multiple other divs:
+        "lastfm-title", "lastfm-artist", "lastfm-timestamp" in that order. -->
+        <section id="lastfm-widget">
+          <h2>Recently played</h2>
+          <p class="lastfm-status"></p>
+          <div class="lastfm-tracklist"></div>
+        </section>
       </div>
     </div>
 

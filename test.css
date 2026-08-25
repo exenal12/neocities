@@ -130,3 +130,7 @@ nav a {
   z-index: 0;
   pointer-events: none;
 }
+
+.lastfm-track {
+  color: white;
+}

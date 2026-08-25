@@ -1,0 +1,40 @@
+#lastfm-widget {
+  color: red;
+  border: 5px solid purple;
+  width: 100%;
+}
+
+.lastfm-tracklist {
+  border: 5px solid gold;
+  display: grid;
+}
+
+.lastfm-track {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "image info";
+}
+
+.lastfm-image {
+  grid-area: image;
+}
+
+.lastfm-info {
+  grid-area: info;
+  border: 5px solid brown;
+  align-items: center;
+  justify-items: center;
+}
+
+.lastfm-title {
+  border: 2px solid red;
+}
+
+.lastfm-artist {
+  border: 2px solid blue;
+}
+
+.lastfm-timestamp {
+  border: 2px solid green;
+}
