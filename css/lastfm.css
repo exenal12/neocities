@@ -12,6 +12,10 @@
   text-align: center;
   margin-top: 2px;
 }
+
+.lastfm-status {
+  text-align: center;
+}
 .lastfm-tracklist {
   display: grid;
   gap: 1rem;
