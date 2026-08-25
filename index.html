@@ -47,8 +47,17 @@
       </div>
     </div>
 
+    <!-- shoutout to JBC for POSTreq https://postrequest.neocities.org/-->
+
     <script src="scripts/oneko.js"></script>
     <script src="scripts/background.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/postreq@1.1.12/dist/postreq.min.js"></script>
+    <script>
+      (() => {
+        const postreq = new POSTreq.POSTreq();
+        window.fetch = postreq.getPolyfill();
+      })();
+    </script>
     <script src="scripts/lastfm.js"></script>
   </body>
 </html>

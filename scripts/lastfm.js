@@ -43,8 +43,6 @@ function normalizeTrack(rawTrack) {
 }
 
 async function fetchAPI() {
-  const widget = document.getElementById("lastfm-widget");
-  let text = "";
   const params = new URLSearchParams({
     method: "user.getRecentTracks",
     user: USERNAME,
