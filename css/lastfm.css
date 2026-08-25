@@ -5,8 +5,13 @@
 
 #lastfm-widget h2 {
   text-align: center;
+  margin-bottom: 2px;
 }
 
+#lastfm-widget h5 {
+  text-align: center;
+  margin-top: 2px;
+}
 .lastfm-tracklist {
   display: grid;
   gap: 1rem;

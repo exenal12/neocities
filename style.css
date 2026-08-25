@@ -6,10 +6,9 @@ body {
   background-color: black;
   font-size: 20px;
   height: 100dvh;
-  gap: 10px;
-  padding: 20px 0;
+  padding: 1.25rem;
   box-sizing: border-box;
-  color: darkgray;
+  color: white;
   font-family:
     system-ui,
     -apple-system,
@@ -21,71 +20,94 @@ body {
   display: flex;
   flex-direction: column;
 }
-a {
-  color: #902c2a;
-}
-
-header {
-  color: darkgray;
-  box-sizing: border-box;
-  width: 70%;
-  margin: 0 auto;
-  border: 5px ridge #700000;
-  border-radius: 10px;
-}
 
 header h2 {
   text-align: center;
 }
 
 nav {
-  position: sticky;
   top: 0;
   width: 70%;
   padding: 4px 6px;
-  margin: 0px auto;
   box-sizing: border-box;
   display: flex;
-  gap: 50px;
   justify-content: space-evenly;
-  border: 5px ridge #500000;
-  border-radius: 10px;
 }
 
 nav a {
   color: darkgray;
 }
 
-/* layout_main is the part of the webpage below the header/nav */
-.layout_main {
+.layout {
   display: grid;
-  min-height: 0;
   flex: 1;
-  grid-template-columns: 15% 70% 15%;
-  grid-template-rows: 1fr;
-  grid-template-areas: "left main right";
+  width: 100%;
+  z-index: 1;
+  min-height: 0;
+  grid-template-columns: 30% 40% 30%;
+  grid-template-rows: 2fr 1fr 2fr;
+  grid-template-areas:
+    "left header right"
+    "left main right"
+    "left footer right";
+}
+
+.header {
+  grid-area: header;
+  border: 0px solid red;
+  box-sizing: border-box;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.main {
+  border: 0px solid blue;
+  box-sizing: border-box;
+  grid-area: main;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.footer {
+  border: 0px solid green;
+  box-sizing: border-box;
+  grid-area: footer;
+  justify-self: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
 }
 
 .sidebar {
-  grid-area: left;
-  width: 60%;
+  width: 80%;
   min-height: 60%;
+  box-sizing: border-box;
   justify-self: center;
   align-items: center;
   align-self: center;
   display: flex;
   justify-content: center;
-  border: 5px groove #500000;
-  border-radius: 10px;
+  border: 0px solid maroon;
 }
 
-/* main_body is the "center" part of the  */
-.main_body {
-  grid-area: main;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+.sidebar-left {
+  grid-area: left;
+}
+
+.sidebar-right {
+  grid-area: right;
 }
 
 #canvas {
@@ -97,3 +119,6 @@ nav a {
   flex-shrink: 0;
   align-self: flex-start;
   overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}

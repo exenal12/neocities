@@ -10,30 +10,45 @@
       type="image/x-icon"
     />
     <link href="/style.css" rel="stylesheet" />
+    <link href="/css/lastfm.css" rel="stylesheet" />
   </head>
   <body>
     <canvas id="canvas" role="background"></canvas>
-    <header>
-      <h2>my website</h2>
-    </header>
 
-    <nav>
-      <a href="/about.html">about me</a>
-      <a href="/rusty.html">rusty</a>
-    </nav>
+    <div class="layout">
+      <div class="header">
+        <header>
+          <h2>rusty's website</h2>
+        </header>
+        <nav>
+          <a href="/index.html">about me</a>
+          <a href="/index.html">rusty</a>
+        </nav>
+      </div>
 
-    <div class="layout_main">
-      <aside class="sidebar">
-        <!-- likely putting last.fm data here -->
-        <p>test</p>
-      </aside>
+      <div class="sidebar sidebar-left"></div>
+      <div class="sidebar sidebar-right">
+        <!-- see lastfm.js for widget shape info -->
+        <section id="lastfm-widget">
+          <h2>recently played</h2>
+          <h5>polled from last.fm</h5>
+          <p class="lastfm-status"></p>
+          <div class="lastfm-tracklist"></div>
+        </section>
+      </div>
 
-      <main class="main_body">
-        <p>this site is highly WIP, check back later</p>
+      <main class="main">
+        <p>im a 22 year old computer science student</p>
+        <p>this site is highly WIP</p>
       </main>
+
+      <div class="footer">
+        <h6>last updated august 25, 2026</h6>
+      </div>
     </div>
 
     <script src="scripts/oneko.js"></script>
     <script src="scripts/background.js"></script>
+    <script src="scripts/lastfm.js"></script>
   </body>
 </html>

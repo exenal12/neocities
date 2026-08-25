@@ -20,9 +20,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-a {
-  color: #902c2a;
-}
 
 header h2 {
   text-align: center;
@@ -34,7 +31,6 @@ nav {
   padding: 4px 6px;
   box-sizing: border-box;
   display: flex;
-  gap: 50px;
   justify-content: space-evenly;
 }
 
@@ -48,7 +44,7 @@ nav a {
   width: 100%;
   z-index: 1;
   min-height: 0;
-  grid-template-columns: 20% 60% 20%;
+  grid-template-columns: 30% 40% 30%;
   grid-template-rows: 2fr 1fr 2fr;
   grid-template-areas:
     "left header right"
@@ -58,18 +54,17 @@ nav a {
 
 .header {
   grid-area: header;
-  border: 5px solid red;
+  border: 0px solid red;
   box-sizing: border-box;
-  justify-self: center;
+  justify-content: flex-end;
   align-items: center;
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 20%;
 }
 
 .main {
-  border: 5px solid blue;
+  border: 0px solid blue;
   box-sizing: border-box;
   grid-area: main;
   justify-self: center;
@@ -81,7 +76,7 @@ nav a {
 }
 
 .footer {
-  border: 5px solid green;
+  border: 0px solid green;
   box-sizing: border-box;
   grid-area: footer;
   justify-self: center;
@@ -91,8 +86,12 @@ nav a {
   width: 100%;
 }
 
+.footer p {
+  margin: 0;
+}
+
 .sidebar {
-  width: 100%;
+  width: 80%;
   min-height: 60%;
   box-sizing: border-box;
   justify-self: center;
@@ -100,7 +99,7 @@ nav a {
   align-self: center;
   display: flex;
   justify-content: center;
-  border: 5px solid maroon;
+  border: 0px solid maroon;
 }
 
 .sidebar-left {
