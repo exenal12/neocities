@@ -1,10 +1,13 @@
 #lastfm-widget {
-  color: red;
+  color: white;
   width: 100%;
 }
 
+#lastfm-widget h2 {
+  text-align: center;
+}
+
 .lastfm-tracklist {
-  border: 0px solid gold;
   display: grid;
   gap: 1rem;
 }
@@ -13,19 +16,22 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   grid-template-rows: auto auto;
-  grid-template-areas:
-    "image title timestamp"
-    "image artist .";
+  grid-template-areas: "image info timestamp";
+  align-items: center;
 }
 
 .lastfm-image {
   grid-area: image;
   max-width: 100%;
-  margin-right: 10px;
+  margin-right: 0.75rem;
 }
 
 .lastfm-info {
-  display: contents;
+  display: grid;
+  grid-area: info;
+  grid-template-areas:
+    "title"
+    "artist";
 }
 
 .lastfm-title {
@@ -38,6 +44,8 @@
 
 .lastfm-timestamp {
   grid-area: timestamp;
+  align-self: flex-start;
+  margin: 0.5rem 0.5rem;
   color: dimgray;
   text-decoration: underline;
   font-size: medium;

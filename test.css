@@ -6,7 +6,7 @@ body {
   background-color: black;
   font-size: 20px;
   height: 100dvh;
-  padding: 20px 0;
+  padding: 1.25rem;
   box-sizing: border-box;
   color: white;
   font-family:
@@ -122,8 +122,4 @@ nav a {
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
-}
-
-.lastfm-track {
-  color: white;
 }

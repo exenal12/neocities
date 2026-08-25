@@ -1,10 +1,9 @@
 const USERNAME = "drenal1";
 const API_KEY = "c313b179ed4458656126373df436252e";
-const POLL_TIME = 60;
 const URL = "https://ws.audioscrobbler.com/2.0/";
 
 function calculateTimestamp(unixTime) {
-  if (unixTime === "Now Playing") return unixTime;
+  if (unixTime === "now playing") return unixTime;
 
   const elapsed = Math.floor((Date.now() - unixTime * 1000) / 1000);
 
@@ -37,10 +36,9 @@ function normalizeTrack(rawTrack) {
   return {
     title: rawTrack.name,
     imgUrl: imgUrl,
-    nowPlaying: rawTrack["@attr"]?.nowplaying === "true",
-    album: rawTrack.album?.["#text"] || "No album found",
-    artist: rawTrack.artist?.["#text"] || "No artist found",
-    timestamp: rawTrack.date?.uts || "Now Playing",
+    album: rawTrack.album?.["#text"] || "no album found",
+    artist: rawTrack.artist?.["#text"] || "no artist found",
+    timestamp: rawTrack.date?.uts || "now playing",
   };
 }
 
@@ -96,6 +94,12 @@ async function renderWidget() {
     img.src = track.imgUrl;
     item.append(img);
 
+    // timestamp/now playing
+    const time = document.createElement("div");
+    time.classList.add("lastfm-timestamp");
+    time.textContent = calculateTimestamp(track.timestamp);
+    item.append(time);
+
     // wrapper div for track info
     const wrapper = document.createElement("div");
     wrapper.classList.add("lastfm-info");
@@ -110,14 +114,9 @@ async function renderWidget() {
     // artist
     const artist = document.createElement("div");
     artist.classList.add("lastfm-artist");
-    artist.textContent = track.artist;
+    artist.textContent = `by ${track.artist}`;
     wrapper.append(artist);
 
-    // timestamp/now playing
-    const time = document.createElement("div");
-    time.classList.add("lastfm-timestamp");
-    time.textContent = calculateTimestamp(track.timestamp);
-    wrapper.append(time);
     trackList.append(item);
   }
 }
