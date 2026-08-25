@@ -55,7 +55,7 @@ async function fetchAPI() {
 
   const data = await fetch(requestUrl).then(async (res) => {
     if (res.ok) {
-      return await res.json();
+      return res.json();
     } else return "Error fetching LastFM data";
   });
 
