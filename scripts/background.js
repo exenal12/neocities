@@ -1,11 +1,14 @@
-const STAR_COUNT = 500;
 const MIN_DEPTH = 1;
 const MAX_DEPTH = 1000;
-let MAX_RADIUS = 4; // default max radius on desktop; value changed on mobile devices
+const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
+const isTouchscreen = navigator.maxTouchPoints > 0;
+const performanceMode = isSmallScreen && isTouchscreen;
+const MAX_RADIUS = isSmallScreen ? 2 : 4; // default max radius on desktop; value changed on mobile devices
 const STAR_RADIUS = (zCoord) =>
   Math.max(0, (1 - zCoord / MAX_DEPTH) * MAX_RADIUS);
 const STAR_SPEED = 1;
 const FOV = 400;
+const STAR_COUNT = performanceMode ? 250 : 500;
 let CENTER = { X: window.innerWidth / 2, Y: window.innerHeight / 2 };
 
 const can = document.getElementById("canvas");
@@ -72,11 +75,6 @@ function frame() {
   if (!isReducedMotion) window.requestAnimationFrame(frame);
 }
 
-function updateViewportSettings() {
-  const isSmall = window.innerWidth <= 768;
-  MAX_RADIUS = isSmall ? 2 : 4;
-}
-
 function resize() {
   // handles window resize so the animation doesn't break
   const dpr = window.devicePixelRatio || 1;
@@ -84,7 +82,6 @@ function resize() {
   can.height = window.innerHeight * dpr;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   CENTER = { X: window.innerWidth / 2, Y: window.innerHeight / 2 };
-  updateViewportSettings();
   if (isReducedMotion) frame();
 }
 
