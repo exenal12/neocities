@@ -63,3 +63,38 @@
   text-decoration: underline;
   font-size: medium;
 }
+
+@media (max-width: 700px) {
+  .lastfm-track {
+    display: grid;
+    grid-template-columns: 4.25rem minmax(0, 1fr) 5rem;
+    grid-template-rows: auto;
+    grid-template-areas: "image info timestamp";
+    align-items: center;
+    width: 100%;
+    max-width: 28rem;
+    justify-self: center;
+  }
+
+  .lastfm-image {
+    width: 3.5rem;
+    margin-right: 0.75rem;
+  }
+
+  .lastfm-info {
+    min-width: 0;
+    text-align: center;
+  }
+
+  .lastfm-title,
+  .lastfm-artist {
+    overflow-wrap: anywhere;
+  }
+
+  .lastfm-timestamp {
+    align-self: center;
+    margin: 0;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}

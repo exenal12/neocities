@@ -122,3 +122,45 @@ nav a {
   z-index: 0;
   pointer-events: none;
 }
+
+@media (max-width: 700px) {
+  body {
+    height: auto;
+    min-height: 100dvh;
+    padding: 0.75rem;
+    font-size: 16px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "header"
+      "main"
+      "right"
+      "footer";
+    gap: 1.5rem;
+  }
+
+  .sidebar-left {
+    display: none;
+  }
+
+  .header,
+  .main,
+  .footer,
+  .sidebar {
+    width: 100%;
+    min-height: 0;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  .main {
+    grid-area: main;
+    align-items: center;
+    text-align: center;
+  }
+}
