@@ -1,0 +1,149 @@
+:root {
+  --advanced-layout: true;
+}
+
+body,
+body * {
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+body {
+  color: #fff;
+  background: transparent;
+}
+
+#background {
+  height: calc(100% - 32px);
+  background: transparent;
+  scrollbar-color: #5e5e5e transparent;
+  scrollbar-width: thin;
+}
+
+#textInput {
+  display: block;
+  height: 32px;
+  box-sizing: border-box;
+  background: rgba(94, 94, 94, 0.35);
+  border: 0;
+  border-radius: 0.65rem;
+}
+
+/* Remove the “Chattable” header while keeping settings available */
+#top_banner {
+  display: none;
+}
+
+#settings {
+  top: auto;
+  right: 34px;
+  bottom: 4px;
+  width: 23px;
+  height: 23px;
+  filter: brightness(0) invert(1) drop-shadow(0 0 2px #000);
+  opacity: 0.8;
+}
+
+#settings:hover,
+#emojiTrayToggle:hover {
+  opacity: 1;
+}
+
+.msgWrapper {
+  display: flex;
+  width: 100%;
+  margin-block: 0.75rem;
+  box-sizing: border-box;
+}
+
+.msgWrapper:has(.sent) {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.msgWrapper:has(.received),
+.msgWrapper:has(.recieved) {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.allMessages {
+  width: fit-content;
+  max-width: 75%;
+  box-sizing: border-box;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.65rem;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.allMessages.sent {
+  background: rgba(122, 122, 122, 0.85);
+}
+
+.allMessages.received,
+.allMessages.recieved {
+  background: rgba(94, 94, 94, 0.85);
+}
+
+.msgBody {
+  overflow-wrap: anywhere;
+}
+
+#input,
+#nameEntry {
+  background: rgba(255, 255, 255, 0.06);
+  border: 0;
+  border-radius: 0;
+  color: #fff;
+  font: inherit;
+}
+
+#input {
+  display: block;
+  width: calc(100% - 40px);
+  height: 32px;
+  min-height: 32px;
+  max-height: 32px;
+  box-sizing: border-box;
+  padding: 0.45rem 0.5rem;
+  background: transparent;
+  line-height: 15px;
+  overflow-y: auto;
+}
+
+#emojiTrayToggle {
+  top: 4px;
+  right: 5px;
+  border: 0;
+  background-color: transparent;
+  filter: brightness(0) invert(1) drop-shadow(0 0 2px #000);
+  opacity: 0.8;
+}
+
+#emojiTray {
+  background: rgba(0, 0, 0, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0.65rem;
+  color: #fff;
+}
+
+#emojiGrid {
+  gap: 0.25rem;
+}
+
+.emojiInGrid {
+  padding: 0.2rem;
+  border-radius: 0.35rem;
+}
+
+#input:empty::before {
+  content: "Message Text [Enter to send]";
+  color: rgba(255, 255, 255, 0.5);
+}

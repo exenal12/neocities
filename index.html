@@ -12,6 +12,7 @@
     <link href="/style.css" rel="stylesheet" />
     <link href="/css/lastfm.css" rel="stylesheet" />
     <script src="https://u.widget.st/ar.js"></script>
+    <script src="https://iframe.chat/scripts/main.min.js"></script>
   </head>
   <body>
     <canvas id="canvas" role="background"></canvas>
@@ -27,7 +28,15 @@
         </nav>
       </div>
 
-      <div class="sidebar sidebar-left"></div>
+      <div class="sidebar sidebar-left">
+        <div class="chat-shell">
+          <iframe
+            src="https://iframe.chat/embed?chat=75242040"
+            id="chattable"
+          ></iframe>
+          <h6>you can change your chat name in the settings menu</h6>
+        </div>
+      </div>
       <div class="sidebar sidebar-right">
         <!-- see lastfm.js for widget shape info -->
         <section id="lastfm-widget">
@@ -42,27 +51,26 @@
       </div>
 
       <main class="main">
-        <p>im a 22 year old computer science student</p>
+        <p>im a 23 year old computer science student</p>
         <p>this site is highly WIP</p>
       </main>
 
       <div class="footer">
-        <h6>last updated august 25, 2026</h6>
+        <h6>last updated august 28, 2026</h6>
         <ws-widget type="hc" iid="8415"></ws-widget>
       </div>
     </div>
 
     <!-- shoutout to JBC for POSTreq https://postrequest.neocities.org/-->
 
-    <script src="scripts/oneko.js"></script>
-    <script src="scripts/background.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/postreq@1.1.12/dist/postreq.min.js"></script>
+    <script src="scripts/oneko.js"></script>
     <script>
-      (() => {
-        const postreq = new POSTreq.POSTreq();
-        window.fetch = postreq.getPolyfill();
-      })();
+      chattable.initialize({
+        stylesheet: "chattable.css",
+      });
     </script>
+    <script src="scripts/background.js"></script>
     <script src="scripts/lastfm.js"></script>
   </body>
 </html>

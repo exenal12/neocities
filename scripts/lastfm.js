@@ -1,6 +1,7 @@
 const USERNAME = "drenal1";
 const API_KEY = "c313b179ed4458656126373df436252e";
 const URL = "https://ws.audioscrobbler.com/2.0/";
+const postreq = new POSTreq.POSTreq();
 
 function calculateTimestamp(unixTime) {
   if (unixTime === "now playing") return unixTime;
@@ -47,13 +48,13 @@ async function fetchAPI() {
     method: "user.getRecentTracks",
     user: USERNAME,
     api_key: API_KEY,
-    limit: "5",
+    limit: "6",
     format: "json",
   });
 
   const requestUrl = `${URL}?${params}`;
 
-  const data = await fetch(requestUrl).then(async (res) => {
+  const data = await postreq.fetch(requestUrl).then(async (res) => {
     if (res.ok) {
       return res.json();
     } else return "Error fetching LastFM data";
